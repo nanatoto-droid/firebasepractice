@@ -5,7 +5,9 @@ import android.provider.MediaStore
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.text.KeyboardOptions
 //import androidx.compose.material.Button
 //import androidx.compose.material.OutlinedTextField
@@ -24,7 +26,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
@@ -34,23 +38,37 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.imani.firebaseimani.R
 import com.imani.firebaseimani.data.productviewmodel
 import com.imani.firebaseimani.navigation.ROUTE_VIEW_PRODUCT
 
 
 @Composable
 fun AddProductsScreen(navController: NavHostController) {
-    Column(modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+         .background(Color.Gray),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement =Arrangement.Center) {
         var context = LocalContext.current
+
+        Spacer(modifier=Modifier.height(30.dp))
+        Image(painter = painterResource(id = R.drawable.loggo3),
+            contentDescription = "logo",
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp))
+        Spacer(modifier = Modifier.height(20.dp))
+
         Text(
             text = "Add product",
             fontSize = 30.sp,
-            fontFamily = FontFamily.Cursive,
-            color = Color.Red,
+            fontFamily = FontFamily.Monospace,
+            color = Color.Black,
+            fontStyle = FontStyle.Italic,
             modifier = Modifier.padding(20.dp),
             fontWeight = FontWeight.Bold,
-            textDecoration = TextDecoration.Underline
+
         )
 
         var productName by remember { mutableStateOf(TextFieldValue("")) }
